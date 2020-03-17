@@ -1,0 +1,5 @@
+<div class="area">
+  <ng-container *ngFor="let item of items; index as i; first as first; last as last">
+    <app-tile [top]="item.top" [left]="item.left" [ind]="item.ind"></app-tile>
+  </ng-container>
+</div>
