@@ -37,19 +37,32 @@ export class GameService {
 
       let tileLength = this.randomFromMinToMax(this.minItemTile, this.maxItemTile);
       for (let j = 1; j <= tileLength; j++) {
-        let top = this.randomFromMinToMax(0, this.areaHeight);
-        let left = this.randomFromMinToMax(0, this.areaWidth);
+        let top = null,
+            left = null;
+        do {
+          top = this.randomFromMinToMax(0, this.areaHeight);
+          left = this.randomFromMinToMax(0, this.areaWidth);
+        } while ( this.checkAround(top,left) === true);
+        
         let item = { top: top, left: left, ind: i};
         this.items.push(item);
       }
 
     }
-    console.log(this.items);
   }
 
   randomFromMinToMax(min, max) {
-    // случайное число от min до (max+1)
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
+  }
+
+  checkAround(top,left){
+    let arr = null;
+    arr = this.items.filter(x=> top >= x.top-30 && top <= x.top+30 && left >= x.left-30 && left <= x.left+30 );
+    if(arr.length >= 1){
+      return true
+    }else{
+      return false
+    }
   }
 }
