@@ -54,6 +54,7 @@ export class GameService {
       this.compareItem = { top,left,ind,id }
       this.replaceTile();
       this.resetChecked();
+      this.generateLines();
     }
   }
 
@@ -95,6 +96,7 @@ export class GameService {
   }
 
  generateLines(){
+   this.lines = [];
    for (let i = 1; i <= this.itemsLength; i++) {
      let arr = this.items.filter(el=>el.ind===i);
      let coordArr = [];
@@ -103,6 +105,7 @@ export class GameService {
      });
      this.lines.push(coordArr);
    }
+   this.observableLines.next(this.lines);
  }
 
   randomFromMinToMax(min, max) {
