@@ -11,6 +11,7 @@ export class TileComponent implements OnInit {
   @Input() top: number;
   @Input() left: number;
   @Input() ind: number;
+  @Input() id: number;
 
   constructor(private service: GameService) { }
 
@@ -18,7 +19,7 @@ export class TileComponent implements OnInit {
   }
 
   onClick(){
-    this.service.onClickTile();
+    this.service.onClickTile(this.top,this.left,this.ind,this.id);
   }
 
 }

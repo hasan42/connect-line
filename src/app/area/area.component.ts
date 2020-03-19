@@ -10,14 +10,22 @@ import { Subscription, BehaviorSubject } from 'rxjs';
 export class AreaComponent implements OnInit {
 
 	items: any;
-  private subscription: Subscription;
+  private subscriptionItems: Subscription;
+  lines: any;
+  private subscriptionLines: Subscription;
 
   constructor(private service: GameService) { }
 
   ngOnInit(): void {
-    this.subscription = this.service.observableItems.subscribe(
+    this.subscriptionItems = this.service.observableItems.subscribe(
         value => {
           this.items = value;
+        },
+        error => console.log(error)
+      );
+    this.subscriptionLines = this.service.observableLines.subscribe(
+        value => {
+          this.lines = value;
         },
         error => console.log(error)
       );
