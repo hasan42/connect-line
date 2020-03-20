@@ -66,8 +66,6 @@ export class GameService {
     this.items[secondItem].left = this.selectItem.left;
     this.items[firstItem].top = this.compareItem.top;
     this.items[firstItem].left = this.compareItem.left;
-
-
   }
   resetChecked(){
     this.selectItem = null;
@@ -88,7 +86,7 @@ export class GameService {
           left = this.randomFromMinToMax(0, this.areaWidth);
         } while ( this.checkAround(top,left) === true);
         
-        let item = { top: top, left: left, ind: i, id: id};
+        let item = { top: top, left: left, ind: i, id: id, selected: null};
         id++;
         this.items.push(item);
       }
@@ -101,11 +99,20 @@ export class GameService {
      let arr = this.items.filter(el=>el.ind===i);
      let coordArr = [];
      arr.forEach(el=>{
-       coordArr.push([el.top,el.left])
+       let obj = {top: el.top, left: el.left, id: i, intersects: null}
+       coordArr.push(obj)
      });
      this.lines.push(coordArr);
    }
    this.observableLines.next(this.lines);
+ }
+
+ checkLines(){
+   this.lines.forEach(el=>{
+     el.forEach(el=>{
+
+     });
+   });
  }
 
   randomFromMinToMax(min, max) {
