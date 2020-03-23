@@ -51,7 +51,7 @@ export class GameService {
     this.resetIntersectsLines();
     this.takeLine()
     this.checkGameOver()
-    console.log(this.items, this.lines);
+    // console.log(this.items, this.lines);
   }
 
   checkGameOver(){
