@@ -30,6 +30,8 @@ export class GameService {
   selectItem: any = null;
   compareItem: any = null;
 
+  gameOver: boolean = false;
+
   constructor() {
     this.newGame();
   }
@@ -42,11 +44,32 @@ export class GameService {
   }
 
   newGame(){
+    this.items.splice(0,this.items.length);
+    this.lines.splice(0,this.lines.length);
     this.generateItems()
     this.generateLines()
     this.resetIntersectsLines();
     this.takeLine()
-    console.log(this.lines);
+    this.checkGameOver()
+    console.log(this.items, this.lines);
+  }
+
+  checkGameOver(){
+    let arr = [];
+    this.lines.forEach(el=>{
+      let arrN = el.filter(elCoord=>elCoord.intersects === true)
+      if(arrN.length > 0){
+        arr.push(arrN)
+      }
+    });
+    
+    this.gameOver = arr.length > 0 ? false : true;
+    if(this.gameOver===true){
+      setTimeout(()=>{
+        console.log('game over');
+        this.newGame()
+      }, 2000)
+    }
   }
 
   onClickTile(top,left,ind,id){
@@ -57,10 +80,11 @@ export class GameService {
       this.replaceTile();
       this.resetChecked();
       this.generateLines();
-    this.resetIntersectsLines();
+      this.resetIntersectsLines();
       this.takeLine()
-    console.log(this.lines);
+      // console.log(this.lines);
     }
+    this.checkGameOver()
   }
 
   replaceTile(){

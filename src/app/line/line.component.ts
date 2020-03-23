@@ -13,13 +13,21 @@ export class LineComponent implements OnInit {
   canvas: ElementRef<HTMLCanvasElement>;
   private ctx: CanvasRenderingContext2D;
 
+  intersects: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
+    this.checkIntersects()
     this.draw();
   }
   draw(){
+    if(this.intersects === true){
+      this.ctx.strokeStyle = 'red';
+    }else{
+      this.ctx.strokeStyle = 'blue';
+    }
     this.ctx.beginPath();
     for (var i = 0; i < this.coord.length; i++) {
       if (i == 0) {
@@ -30,5 +38,9 @@ export class LineComponent implements OnInit {
     }
     this.ctx.closePath()
     this.ctx.stroke();
+  }
+  checkIntersects(){
+    let arr = this.coord.filter(el=>el.intersects===true)
+    this.intersects = arr.length > 0 ? true : false;
   }
 }
