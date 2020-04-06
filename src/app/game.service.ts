@@ -68,7 +68,7 @@ export class GameService {
       setTimeout(()=>{
         console.log('game over');
         this.newGame()
-      }, 2000)
+      }, 1500)
     }
   }
 
