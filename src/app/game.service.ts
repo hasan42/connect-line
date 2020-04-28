@@ -32,6 +32,9 @@ export class GameService {
 
   gameOver: boolean = false;
 
+  gameModes: any = ["easy", "medium", "hard"];
+  gameMode: string = "medium";
+
   constructor() {
     this.newGame();
   }

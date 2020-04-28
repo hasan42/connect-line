@@ -1,6 +1,31 @@
 .tile {
   position: absolute;
-  width: 30px;
-  height: 30px;
-  border: 1px solid blue;
+  width: 20px;
+  height: 20px;
+  // border: 1px solid blue;
+  border-radius: 50%;
+  transform: translate(-10px, -10px);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.blue {
+  background-color: #92BBCA;
+}
+.orange {
+  background-color: #DEAC8E;
+}
+.red {
+  background-color: #E96346;
+}
+.green {
+  background-color: #87CAA5;
+}
+.pink {
+  background-color: #B33F72;
+}
+.violet {
+  background-color: #271B33;
+}
+.color {
+  background-color: #577A86;
 }

@@ -19,14 +19,15 @@ export class LineComponent implements OnInit {
 
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    this.checkIntersects()
+    this.checkIntersects();
+    // setTimeout(()=>{this.draw()},500)
     this.draw();
   }
   draw(){
     if(this.intersects === true){
-      this.ctx.strokeStyle = 'red';
+      this.ctx.strokeStyle = '#A5606E';
     }else{
-      this.ctx.strokeStyle = 'blue';
+      this.ctx.strokeStyle = '#8898B8';
     }
     this.ctx.beginPath();
     for (var i = 0; i < this.coord.length; i++) {
