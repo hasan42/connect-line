@@ -17,6 +17,8 @@ export class TileComponent implements OnInit {
   // colors: any = ["blue", "orange", "pink", "violet", "red", "green"];
   color: string = null;
 
+  @Input() selected: boolean;
+
   textInd: number = null;
 
   constructor(private service: GameService) { }
@@ -40,6 +42,7 @@ export class TileComponent implements OnInit {
   }
 
   onClick(){
+    // this.selected = !this.selected;
     this.service.onClickTile(this.top,this.left,this.ind,this.id);
   }
 

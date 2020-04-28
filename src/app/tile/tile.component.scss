@@ -2,11 +2,14 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  // border: 1px solid blue;
+  border: 1px solid transparent;
   border-radius: 50%;
   transform: translate(-10px, -10px);
   cursor: pointer;
   transition: all 0.2s;
+}
+.selected {
+  border-color: red;
 }
 .blue {
   background-color: #92BBCA;

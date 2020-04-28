@@ -33,7 +33,7 @@ export class GameService {
   gameOver: boolean = false;
 
   gameModes: any = ["easy", "medium", "hard"];
-  gameMode: string = "medium";
+  gameMode: string = "hard";
 
   constructor() {
     this.newGame();
@@ -54,7 +54,7 @@ export class GameService {
     this.resetIntersectsLines();
     this.takeLine()
     this.checkGameOver()
-    // console.log(this.items, this.lines);
+    console.log(this.items, this.lines);
   }
 
   checkGameOver(){
@@ -78,6 +78,8 @@ export class GameService {
   onClickTile(top,left,ind,id){
     if(this.selectItem === null){
       this.selectItem = { top,left,ind,id }
+      let elId = this.getIndexTileById(this.selectItem.id);
+      this.items[elId].selected = true;
     }else{
       this.compareItem = { top,left,ind,id }
       this.replaceTile();
@@ -100,6 +102,11 @@ export class GameService {
     this.items[firstItem].left = this.compareItem.left;
   }
   resetChecked(){
+    let firstItem = this.getIndexTileById(this.selectItem.id),
+        secondItem = this.getIndexTileById(this.compareItem.id);
+    this.items[firstItem].selected = false;
+    this.items[secondItem].selected = false;
+
     this.selectItem = null;
     this.compareItem = null;
   }
