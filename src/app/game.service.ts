@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject } from 'rxjs';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +33,11 @@ export class GameService {
 
   gameOver: boolean = false;
 
-  gameModes: any = ["easy", "medium", "hard"];
+  gameModes: any = ["easy", "medium", "hard", "progress"];
   gameMode: string = "hard";
 
-  constructor() {
+  constructor(private alert: AlertService) {
+    this.changeSettings();
     this.newGame();
   }
 
@@ -45,8 +47,13 @@ export class GameService {
   getIndexTileById(fId):number{
     return this.items.findIndex(el=>el.id===fId)
   }
+  randomFromMinToMax(min, max) {
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
+  }
 
   newGame(){
+    this.alert.callAlert('New game!');
     this.items.splice(0,this.items.length);
     this.lines.splice(0,this.lines.length);
     this.generateItems()
@@ -54,7 +61,47 @@ export class GameService {
     this.resetIntersectsLines();
     this.takeLine()
     this.checkGameOver()
-    console.log(this.items, this.lines);
+    // console.log(this.items, this.lines);
+  }
+
+  selectGameMode(mode){
+    this.gameMode = mode;
+    this.changeSettings();
+    this.newGame();
+  }
+
+  changeSettings(){
+    switch (this.gameMode) {
+      case "easy":
+        this.minItems = 3;
+        this.maxItems = 5;
+        this.minItemTile = 3;
+        this.maxItemTile = 5;
+        break;
+      case "medium":
+        this.minItems = 3;
+        this.maxItems = 6;
+        this.minItemTile = 3;
+        this.maxItemTile = 8;
+        break;
+      case "hard":
+        this.minItems = 6;
+        this.maxItems = 10;
+        this.minItemTile = 6;
+        this.maxItemTile = 10;
+        break;
+      case "progress":
+        this.minItems = 6;
+        this.maxItems = 10;
+        this.minItemTile = 6;
+        this.maxItemTile = 10;
+        break;
+      default:
+        this.minItems = 3;
+        this.maxItems = 6;
+        this.minItemTile = 3;
+        this.maxItemTile = 8;
+    }
   }
 
   checkGameOver(){
@@ -68,8 +115,8 @@ export class GameService {
     
     this.gameOver = arr.length > 0 ? false : true;
     if(this.gameOver===true){
+      this.alert.callAlert('Level End!');
       setTimeout(()=>{
-        console.log('game over');
         this.newGame()
       }, 1500)
     }
@@ -202,11 +249,6 @@ export class GameService {
       
     }
     return false;
-  }
-
-  randomFromMinToMax(min, max) {
-    let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
   }
 
   checkAround(top,left){

@@ -27,7 +27,7 @@ export class TileComponent implements OnInit {
 
     switch (this.service.gameMode) {
       case "easy":
-        this.textInd = this.ind;
+        // this.textInd = this.ind;
         this.color = this.colors[this.ind];
         break;
       case "medium":

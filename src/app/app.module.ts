@@ -6,6 +6,8 @@ import { AreaComponent } from './area/area.component';
 import { TileComponent } from './tile/tile.component';
 import { StatComponent } from './stat/stat.component';
 import { LineComponent } from './line/line.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { LineComponent } from './line/line.component';
     AreaComponent,
     TileComponent,
     StatComponent,
-    LineComponent
+    LineComponent,
+    SettingsComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule
