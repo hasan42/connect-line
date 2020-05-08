@@ -1,1 +1,3 @@
-<p>stat works!</p>
+<div *ngIf="service.gameMode === 'progress'">
+  Current items: {{service.maxItems}}; Tiles in items: {{service.minItemTile}} - {{service.maxItemTile}}
+</div>

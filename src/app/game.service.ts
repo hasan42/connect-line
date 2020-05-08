@@ -34,7 +34,7 @@ export class GameService {
   gameOver: boolean = false;
 
   gameModes: any = ["easy", "medium", "hard", "progress"];
-  gameMode: string = "hard";
+  gameMode: string = "easy";
 
   constructor(private alert: AlertService) {
     this.changeSettings();
@@ -56,6 +56,9 @@ export class GameService {
     this.alert.callAlert('New game!');
     this.items.splice(0,this.items.length);
     this.lines.splice(0,this.lines.length);
+    if(this.gameMode === "progress"){
+      this.progressGameSettings();
+    }
     this.generateItems()
     this.generateLines()
     this.resetIntersectsLines();
@@ -91,16 +94,28 @@ export class GameService {
         this.maxItemTile = 10;
         break;
       case "progress":
-        this.minItems = 6;
-        this.maxItems = 10;
-        this.minItemTile = 6;
-        this.maxItemTile = 10;
+        this.minItems = 3;
+        this.maxItems = 3;
+        this.minItemTile = 3;
+        this.maxItemTile = 3;
         break;
       default:
         this.minItems = 3;
         this.maxItems = 6;
         this.minItemTile = 3;
         this.maxItemTile = 8;
+    }
+  }
+
+  progressGameSettings() {
+    if(this.maxItemTile === 20){
+      ++this.minItems;
+      ++this.maxItems;
+      this.minItemTile = 3;
+      this.maxItemTile = 3;
+    }else{
+      this.minItemTile = this.maxItemTile;
+      ++this.maxItemTile;
     }
   }
 

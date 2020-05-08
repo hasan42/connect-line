@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-stat',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: GameService) { }
 
   ngOnInit(): void {
   }
