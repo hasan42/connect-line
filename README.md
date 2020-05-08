@@ -1,6 +1,6 @@
 # ConnectLine
 
-[DEMO](http://connect-line.irustam.ru/)
+[DEMO](http://connect-line.irustam.ru/)  
 [PROJECTS](https://github.com/users/hasan42/projects/4)
 
 Игра "распутывание линий" на Angular.  
