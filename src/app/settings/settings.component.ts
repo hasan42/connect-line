@@ -8,7 +8,7 @@ import { GameService } from '../game.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private service: GameService) { }
+  constructor(public service: GameService) { }
 
   ngOnInit(): void {
   }

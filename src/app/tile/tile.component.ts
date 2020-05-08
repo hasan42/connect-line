@@ -31,7 +31,7 @@ export class TileComponent implements OnInit {
         this.color = this.colors[this.ind];
         break;
       case "medium":
-        this.color = this.colors[this.ind];
+        this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
         break;
       case "hard":
         this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
