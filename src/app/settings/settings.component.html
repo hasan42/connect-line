@@ -1,6 +1,14 @@
 <div class="settings">
-  <button [class.selected]="service.gameMode === 'easy'" (click)="onSelectGameMode('easy')">Easy</button>
-  <button [class.selected]="service.gameMode === 'medium'" (click)="onSelectGameMode('medium')">Medium</button>
-  <button [class.selected]="service.gameMode === 'hard'" (click)="onSelectGameMode('hard')">Hard</button>
-  <button [class.selected]="service.gameMode === 'progress'" (click)="onSelectGameMode('progress')">Progress</button>
+  <div class="difficult">
+    <button [class.selected]="service.gameMode === 'easy'" (click)="onSelectGameMode('easy')">Easy</button>
+    <button [class.selected]="service.gameMode === 'medium'" (click)="onSelectGameMode('medium')">Medium</button>
+    <button [class.selected]="service.gameMode === 'hard'" (click)="onSelectGameMode('hard')">Hard</button>
+    <button [class.selected]="service.gameMode === 'progress'" (click)="onSelectGameMode('progress')">Progress</button>
+  </div>
+  <div class="night-mode">
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div>
 </div>
