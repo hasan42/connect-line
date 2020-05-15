@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GameService } from '../game.service';
 import { Subscription, BehaviorSubject } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Subscription, BehaviorSubject } from 'rxjs';
   templateUrl: './area.component.html',
   styleUrls: ['./area.component.scss']
 })
-export class AreaComponent implements OnInit {
+export class AreaComponent implements OnInit, OnDestroy {
 
 	items: any;
   private subscriptionItems: Subscription;
@@ -29,6 +29,15 @@ export class AreaComponent implements OnInit {
         },
         error => console.log(error)
       );
+  }
+
+  ngOnDestroy() {
+    if (this.subscriptionItems) {
+      this.subscriptionItems.unsubscribe()
+    }
+    if (this.subscriptionLines) {
+      this.subscriptionLines.unsubscribe()
+    }
   }
 
 }
