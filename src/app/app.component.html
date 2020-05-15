@@ -1,6 +1,11 @@
 <app-alert></app-alert>
-<div class="wrap">
-  <app-settings></app-settings>
-  <app-stat></app-stat>
-  <app-area></app-area>
+<div class="wrap" [class.night-mode]="nightMode">
+  <div class="wrapper">
+    <div class="settings">
+      <app-settings></app-settings>
+      <app-night-mode (nightMode)="onChangeNightMode($event)"></app-night-mode>
+    </div>
+    <app-stat></app-stat>
+    <app-area></app-area>
+  </div>
 </div>

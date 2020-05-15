@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-tile',
   templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.scss']
+  styleUrls: ['./tile.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TileComponent implements OnInit {
 
@@ -13,8 +14,8 @@ export class TileComponent implements OnInit {
   @Input() ind: number;
   @Input() id: number;
 
-  colors: any = ["#92BBCA", "#DEAC8E", "#E96346", "#87CAA5", "#B33F72", "#271B33", "#577A86"];
-  // colors: any = ["blue", "orange", "pink", "violet", "red", "green"];
+  // colors: any = ["#92BBCA", "#DEAC8E", "#E96346", "#87CAA5", "#B33F72", "#271B33", "#577A86"];
+  colors: any = ["blue", "orange", "red", "green", "pink", "black", "grey"];
   color: string = null;
 
   @Input() selected: boolean;

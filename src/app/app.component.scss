@@ -1,4 +1,17 @@
 .wrap {
+  background: #ecf3f3;
+}
+.wrapper {
   margin: 0 auto;
   max-width: 800px;
+}
+.night-mode {
+  height: 100vh;
+  background: #000;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

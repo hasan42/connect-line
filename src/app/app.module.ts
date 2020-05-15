@@ -8,6 +8,7 @@ import { StatComponent } from './stat/stat.component';
 import { LineComponent } from './line/line.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AlertComponent } from './alert/alert.component';
+import { NightModeComponent } from './night-mode/night-mode.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AlertComponent } from './alert/alert.component';
     StatComponent,
     LineComponent,
     SettingsComponent,
-    AlertComponent
+    AlertComponent,
+    NightModeComponent
   ],
   imports: [
     BrowserModule

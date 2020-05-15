@@ -1,1 +1,8 @@
-<div class="tile" [class.selected]="selected" [style.backgroundColor]="color" [style.top]="top+'px'" [style.left]="left+'px'" (click)="onClick()">{{textInd}}</div>
+<div class="tile" 
+     [class.selected]="selected" 
+     [ngClass]="color" 
+     [style.top]="top+'px'" 
+     [style.left]="left+'px'" 
+     (click)="onClick()">
+        {{textInd}}
+</div>

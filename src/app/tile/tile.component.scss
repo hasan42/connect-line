@@ -27,9 +27,36 @@
 .pink {
   background-color: #B33F72;
 }
-.violet {
+.black {
   background-color: #271B33;
 }
-.color {
+.grey {
   background-color: #577A86;
+}
+
+.night-mode {
+  .tile {
+    // box-shadow: 0px 0px 5px 4px rgba(#fff,0.5);
+    &.blue {
+      box-shadow: 0px 0px 5px 4px rgba(#92BBCA,0.5);
+    }
+    &.orange {
+      box-shadow: 0px 0px 5px 4px rgba(#DEAC8E,0.5);
+    }
+    &.red {
+      box-shadow: 0px 0px 5px 4px rgba(#E96346,0.5);
+    }
+    &.green {
+      box-shadow: 0px 0px 5px 4px rgba(#87CAA5,0.5);
+    }
+    &.pink {
+      box-shadow: 0px 0px 5px 4px rgba(#B33F72,0.5);
+    }
+    &.black {      
+      box-shadow: 0px 0px 5px 4px rgba(#fff,0.5);
+    }
+    &.grey {
+      box-shadow: 0px 0px 5px 4px rgba(#577A86,0.5);
+    }
+  }
 }
