@@ -18,7 +18,7 @@ export class AreaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptionItems = this.service.observableItems.subscribe(
-        value => {
+      value => {
           this.items = value;
         },
         error => console.log(error)

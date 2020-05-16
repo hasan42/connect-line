@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, SimpleChanges, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-line',
   templateUrl: './line.component.html',
   styleUrls: ['./line.component.scss']
 })
-export class LineComponent implements OnInit {
+export class LineComponent implements OnInit, AfterContentChecked {
 
   @Input() coord: any;
 
@@ -21,6 +21,10 @@ export class LineComponent implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.checkIntersects();
     // setTimeout(()=>{this.draw()},500)
+    this.draw();
+  }
+  ngAfterContentChecked() {
+    this.checkIntersects();
     this.draw();
   }
   draw(){

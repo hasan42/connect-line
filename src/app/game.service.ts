@@ -64,7 +64,6 @@ export class GameService {
     this.resetIntersectsLines();
     this.takeLine()
     this.checkGameOver()
-    // console.log(this.items, this.lines);
   }
 
   selectGameMode(mode){
@@ -145,8 +144,9 @@ export class GameService {
     }else{
       this.compareItem = { top,left,ind,id }
       this.replaceTile();
+      this.changeLinePoints();
       this.resetChecked();
-      this.generateLines();
+      // this.generateLines();
       this.resetIntersectsLines();
       this.takeLine()
       // console.log(this.lines);
@@ -206,6 +206,40 @@ export class GameService {
       this.lines.push(coordArr);
     }
     this.observableLines.next(this.lines);
+  }
+  changeLinePoints() {
+    let firstItem = this.getIndexTileById(this.compareItem.id),
+        secondItem = this.getIndexTileById(this.selectItem.id);
+
+    let linePointFirst = null, linePointSecond = null;
+    this.lines.map((arr,arrIdx)=>{
+      if (linePointFirst !== null && linePointSecond !== null) {
+        return
+      }
+      arr.map((el,elIdx) => {
+        if (linePointFirst === null) {
+          if (el.top === this.items[secondItem].top && el.left === this.items[secondItem].left) {
+            linePointFirst = {arrIdx,elIdx}
+          }
+        }
+        if (linePointSecond === null) {
+          if (el.top === this.items[firstItem].top && el.left === this.items[firstItem].left) {
+            linePointSecond = { arrIdx, elIdx }
+          }
+        }
+      });
+    });
+
+    // this.observableLines.next(this.lines);
+    // console.log(tempArr);
+
+    this.lines[linePointFirst.arrIdx][linePointFirst.elIdx].top = this.selectItem.top;
+    this.lines[linePointFirst.arrIdx][linePointFirst.elIdx].left = this.selectItem.left;
+    // console.log(linePointFirst, linePointSecond);
+    this.lines[linePointSecond.arrIdx][linePointSecond.elIdx].top = this.compareItem.top;
+    this.lines[linePointSecond.arrIdx][linePointSecond.elIdx].left = this.compareItem.left;
+
+    // this.observableLines.next(this.lines);
   }
 
   resetIntersectsLines(){
