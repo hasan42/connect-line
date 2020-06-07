@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked, SimpleChanges, Input, ViewChild, ElementRef } from '@angular/core';
-import lodash from 'lodash';
+// import lodash from 'lodash';
 
 @Component({
   selector: 'app-line',
