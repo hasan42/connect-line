@@ -8,11 +8,11 @@
     width: 0;
     height: 0;
     &:checked + .slider {
-      background-color: #2196F3;
+      background-color: #73A58D;
     }
 
     &:focus + .slider {
-      box-shadow: 0 0 1px #2196F3;
+      box-shadow: 0 0 1px #73A58D;
     }
 
     &:checked + .slider:before {
@@ -26,7 +26,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #748495;
     transition: .4s;
     border-radius: 34px;
     &:before {

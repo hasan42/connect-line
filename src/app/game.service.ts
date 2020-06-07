@@ -231,11 +231,9 @@ export class GameService {
     });
 
     // this.observableLines.next(this.lines);
-    // console.log(tempArr);
 
     this.lines[linePointFirst.arrIdx][linePointFirst.elIdx].top = this.selectItem.top;
     this.lines[linePointFirst.arrIdx][linePointFirst.elIdx].left = this.selectItem.left;
-    // console.log(linePointFirst, linePointSecond);
     this.lines[linePointSecond.arrIdx][linePointSecond.elIdx].top = this.compareItem.top;
     this.lines[linePointSecond.arrIdx][linePointSecond.elIdx].left = this.compareItem.left;
 
